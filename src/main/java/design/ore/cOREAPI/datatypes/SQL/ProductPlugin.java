@@ -1,6 +1,7 @@
 package design.ore.cOREAPI.datatypes.SQL;
 
 import java.util.Date;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -34,7 +35,7 @@ public class ProductPlugin
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
-	long id;
+	Long id;
 	@Column(columnDefinition = "nvarchar(256)")
 	String name;
 	@Column(columnDefinition = "nvarchar(256)")
@@ -57,7 +58,7 @@ public class ProductPlugin
 	
 	/////////// This is used as sort of a pseudo-wrapper for end users to access ///////////
 	@Transient
-	@JsonProperty
+	@JsonProperty(value="associatedProductId")
 	public Long getAssociatedProductId()
 	{
 		if(associatedProduct != null) return associatedProduct.getId();
@@ -65,9 +66,23 @@ public class ProductPlugin
 	}
 	
 	@JsonProperty(value="associatedProductId")
-	public Long setAssociatedProductId() { return associatedProductId; }
+	public void setAssociatedProductId(Long associatedProductId) { this.associatedProductId = associatedProductId; }
+	
+	@Transient
+	@JsonProperty(value="associatedOrganizationId")
+	public UUID getAssociatedOrganizationId()
+	{
+		if(associatedOrganization != null) return associatedOrganization.getId();
+		else return associatedOrganizationId;
+	}
+	
+	@JsonProperty(value="associatedOrganizationId")
+	public void setAssociatedOrganizationId(UUID associatedOrganizationId) { this.associatedOrganizationId = associatedOrganizationId; }
 	
 	@Transient
 	@JsonIgnore
 	Long associatedProductId;
+	@Transient
+	@JsonIgnore
+	UUID associatedOrganizationId;
 }
