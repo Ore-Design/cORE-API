@@ -41,7 +41,7 @@ public class UserMetadata
 	public Map<String, String> getUserProductArgumentsAsMap()
 	{
 		Map<String, String> map = new HashMap<>();
-		userProductArguments.forEach(opa -> map.put(opa.key, opa.value));
+		if(userProductArguments != null) userProductArguments.forEach(opa -> map.put(opa.key, opa.value));
 		return map;
 	}
 }

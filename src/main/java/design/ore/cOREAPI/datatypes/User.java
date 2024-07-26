@@ -34,12 +34,6 @@ public class User
 	Map<String, String> userProductArguments;
 	Organization organization;
 	
-	public void appendMetadata(UserMetadata metadata)
-	{
-		userProductArguments = metadata.getUserProductArgumentsAsMap();
-		title = metadata.getTitle();
-	}
-	
 	@JsonIgnore
 	public String getName() { return firstName + " " + lastName; }
 }
