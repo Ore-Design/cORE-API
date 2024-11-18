@@ -1,13 +1,18 @@
 package design.ore.cOREAPI.datatypes;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import design.ore.cOREAPI.datatypes.SQL.Organization;
+import design.ore.cOREAPI.datatypes.SQL.OrganizationalRole;
 import design.ore.cOREAPI.datatypes.SQL.UserMetadata;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +35,16 @@ public class User
 	String firstName;
 	String lastName;
 	String email;
-	String title;
+	List<OrganizationalRole> roles;
+	Set<String> rawRoles;
 	Map<String, String> userProductArguments;
 	Organization organization;
 	
 	@JsonIgnore
 	public String getName() { return firstName + " " + lastName; }
+	
+	public Set<String> getRolesAsStringSet()
+	{
+		return Stream.concat(roles.stream().map(OrganizationalRole::getName), rawRoles.stream()).collect(Collectors.toSet());
+	}
 }

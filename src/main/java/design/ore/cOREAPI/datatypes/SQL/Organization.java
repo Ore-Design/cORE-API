@@ -51,6 +51,9 @@ public class Organization
 	Integer postalCode;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
 	List<OrganizationalProductArgument> organizationProductArguments;
+	@JsonIgnoreProperties({"organization"})
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
+	List<OrganizationalRole> organizationRoles;
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "organization")
 	List<OrganizationInvite> invites;
@@ -61,7 +64,9 @@ public class Organization
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "ACCESS_ORGANIZATION_MAPPING")
 	List<Product> products;
 	
-	/////////// This is used as sort of a pseudo-wrapper for end users to access ///////////
+	@Transient @JsonIgnore public List<OrganizationalProductArgument> getOrganizationProductArgumentsUnmapped() { return organizationProductArguments; }
+	
+	/////////// Argument wrapper for end users to access ///////////
 	@Transient
 	public Map<String, String> getOrganizationProductArguments()
 	{

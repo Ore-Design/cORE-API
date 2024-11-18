@@ -23,5 +23,5 @@ public class ConsumerTokenRealmSigner
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	Long id;
-	String consumerKey, consumerSecret, token, tokenSecret, realm;
+	String consumerSecret, tokenSecret, realm;
 }
