@@ -26,7 +26,7 @@ public class FloreSessionMetadata
 	@Id
 	@Column(name="id", nullable=false)
 	Long id;
-	@Column(name="pausedMinutes", nullable=false, columnDefinition = "bigint default 0")
-	Long pausedMinutes;
+	@Column(name="pausedMillis", nullable=false, columnDefinition = "bigint default 0")
+	Long pausedMillis;
 	Timestamp pausedTime;
 }
