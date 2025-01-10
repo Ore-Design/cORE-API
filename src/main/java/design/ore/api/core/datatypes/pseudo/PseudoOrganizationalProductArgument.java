@@ -1,4 +1,4 @@
-package design.ore.cOREAPI.datatypes.pseudo;
+package design.ore.api.core.datatypes.pseudo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

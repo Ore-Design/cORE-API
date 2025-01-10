@@ -1,4 +1,4 @@
-package design.ore.cOREAPI.datatypes;
+package design.ore.api.core.datatypes;
 
 import java.util.List;
 import java.util.Map;
@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import design.ore.cOREAPI.datatypes.SQL.Organization;
-import design.ore.cOREAPI.datatypes.SQL.OrganizationalRole;
-import design.ore.cOREAPI.datatypes.SQL.UserMetadata;
+import design.ore.api.core.datatypes.SQL.Organization;
+import design.ore.api.core.datatypes.SQL.OrganizationalRole;
+import design.ore.api.core.datatypes.SQL.UserMetadata;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

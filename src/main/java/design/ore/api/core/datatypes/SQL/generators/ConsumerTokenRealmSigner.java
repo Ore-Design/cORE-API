@@ -1,4 +1,4 @@
-package design.ore.cOREAPI.datatypes.SQL.generators;
+package design.ore.api.core.datatypes.SQL.generators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

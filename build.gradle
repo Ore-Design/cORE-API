@@ -1,6 +1,8 @@
 plugins {
 	id 'java-library'
     id 'maven-publish'
+    id 'signing'
+    id 'tech.yanand.maven-central-publish' version '1.3.0'
 }
 
 java {
@@ -10,17 +12,49 @@ java {
 
 publishing {
     publications {
-        maven(MavenPublication) {
-		from components.java
+        mavenJava(MavenPublication) {
+			from components.java
+			pom {
+		        name = 'cORE-API'
+		        description = "API for integrations to Ore Design's cORE software server"
+                url = 'http://c.ore.design'
+                licenses {
+                    license {
+                        name = 'GNU General Public License, Version 3'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0.en.html#license-text'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'jbatista'
+                        name = 'Jacob Batista'
+                        email = 'jbatista@ore.design'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/Ore-Design/cORE-API.git'
+                    developerConnection = 'scm:git:ssh://github.com/Ore-Design/cORE-API.git'
+                    url = 'http://c.ore.design'
+                }
+            }
         }
     }
+}
+
+signing {
+    useInMemoryPgpKeys(findProperty('signingKey'), findProperty('signingPassword'))
+    sign publishing.publications.mavenJava
+}
+
+mavenCentral {
+    authToken = (findProperty('sonatypeUsername') + ':' + findProperty('sonatypePassword')).bytes.encodeBase64().toString()
 }
 
 sourceCompatibility = 21
 targetCompatibility = 21
 
-def packagename = "cORE-API"
-group = "design.ore"
+def packagename = "core"
+group = "design.ore.api"
 version = "2.0.7"
 
 repositories {

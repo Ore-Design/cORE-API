@@ -1,4 +1,4 @@
-package design.ore.cOREAPI.datatypes.SQL;
+package design.ore.api.core.datatypes.SQL;
 
 import java.util.Date;
 import java.util.UUID;

@@ -1,12 +1,9 @@
-package design.ore.cOREAPI.datatypes.SQL;
-
-import java.util.List;
+package design.ore.api.core.datatypes.SQL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
@@ -14,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,26 +23,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cORE_ORGANIZATIONAL_ROLE")
+@Table(name = "cORE_USER_PRODUCT_ARGUMENTS")
 @JsonInclude(Include.NON_NULL)
-public class OrganizationalRole
+public class UserProductArgument
 {
-	public OrganizationalRole(Organization organization, String name)
-	{
-		this.organization = organization;
-		this.name = name;
-	}
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
-	Long id;
+	long id;
 	@ManyToOne
-	@JsonIgnoreProperties({"organizationProductArguments", "organizationRoles"})
-	@JoinColumn(name = "organizationId", referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_OrganizationToRole"))
-	Organization organization;
-	@Column(columnDefinition = "nvarchar(64)", name = "name", nullable = false)
-	String name;
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "userRoles")
-	List<UserMetadata> assignedUsers;
+	@JsonIgnoreProperties("userProductArguments")
+	@JoinColumn(name = "userId", referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_UserToProductArgument"))
+	UserMetadata user;
+	@ManyToOne
+	@JsonIgnoreProperties("productArguments")
+	@JoinColumn(name = "productId", nullable = false, referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_UserProductToProduct"))
+	Product associatedProduct;
+	@Column(columnDefinition = "nvarchar(64)", name = "argumentKey", nullable = false)
+	String key;
+	@Column(columnDefinition = "nvarchar(4000)", name = "argumentValue", nullable = false)
+	String value;
 }

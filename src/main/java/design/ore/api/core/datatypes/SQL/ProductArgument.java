@@ -1,4 +1,4 @@
-package design.ore.cOREAPI.datatypes.SQL;
+package design.ore.api.core.datatypes.SQL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -23,21 +23,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cORE_ORGANIZATIONAL_PRODUCT_ARGUMENTS")
+@Table(name = "cORE_PRODUCT_ARGUMENTS")
 @JsonInclude(Include.NON_NULL)
-public class OrganizationalProductArgument
+public class ProductArgument
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
-	Long id;
-	@ManyToOne
-	@JsonIgnoreProperties("organizationProductArguments")
-	@JoinColumn(name = "organizationId", referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_OrganizationToProductArgument"))
-	Organization organization;
+	long id;
 	@ManyToOne
 	@JsonIgnoreProperties("productArguments")
-	@JoinColumn(name = "productId", nullable = false, referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_OrganizationToProduct"))
+	@JoinColumn(name = "productId", nullable = false, referencedColumnName = "id", foreignKey=@ForeignKey(name = "FK_ProductToProductArgument"))
 	Product associatedProduct;
 	@Column(columnDefinition = "nvarchar(64)", name = "argumentKey", nullable = false)
 	String key;
