@@ -1,7 +1,5 @@
 package design.ore.api.core.datatypes.SQL;
 
-import java.sql.Timestamp;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -23,10 +21,23 @@ import lombok.Setter;
 @JsonInclude(Include.NON_NULL)
 public class FloreSessionMetadata
 {
+	public FloreSessionMetadata(long id, long userId)
+	{
+		this.id = id;
+		this.userId = userId;
+		pausedMillis = 0L;
+		appliedMillis = 0L;
+		paused = false;
+	}
+	
 	@Id
 	@Column(name="id", nullable=false)
 	Long id;
+	@Column(name="userId", nullable=false)
+	Long userId;
 	@Column(name="pausedMillis", nullable=false, columnDefinition = "bigint default 0")
 	Long pausedMillis;
-	Timestamp pausedTime;
+	@Column(name="appliedMillis", nullable=false, columnDefinition = "bigint default 0")
+	Long appliedMillis;
+	boolean paused = false;
 }
