@@ -56,7 +56,7 @@ targetCompatibility = 21
 def packagename = "core"
 archivesBaseName = "${packagename}"
 group = "design.ore.api"
-version = "2.0.9"
+version = "2.0.13"
 
 repositories {
     mavenCentral()
