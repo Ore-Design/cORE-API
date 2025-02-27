@@ -1,8 +1,7 @@
 # cORE API
 
-[![](https://jitpack.io/v/Ore-Design/cORE-API/month.svg)](https://jitpack.io/#Ore-Design/cORE-API)
-[![](https://jitpack.io/v/Ore-Design/cORE-API/week.svg)](https://jitpack.io/#Ore-Design/cORE-API)
-[![](https://jitpack.io/v/Ore-Design/cORE-API.svg)](https://jitpack.io/#Ore-Design/cORE-API)
+![Maven Central Version](https://img.shields.io/maven-central/v/design.ore.api/cORE-API)
+![Maven Central Last Update](https://img.shields.io/maven-central/last-update/design.ore.api/cORE-API)
 
 ## Overview
 
@@ -13,24 +12,16 @@ The **cORE API** is a public repository that contains necessary classes for acce
 To get started with the cORE API, follow these steps:
 
 1. **Add Repository to your Project:**
-   JitPack is used to host the public repository. Make sure that you have the repository source listed in your package manager.
+   Maven Central is used to host the public repository. Make sure that you have the repository source listed in your package manager.
 
    Gradle:
    ```bash
    repositories {
       mavenCentral()
-      maven { url 'https://jitpack.io' }
    }
    ```
    Maven:
-   ```bash
-   <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-   ```
+   Maven already includes mavenCentral.
 
    Then add the API to your project dependancies.
 
@@ -38,16 +29,16 @@ To get started with the cORE API, follow these steps:
    ```bash
    dependencies
    {
-      implementation 'com.github.Ore-Design:cORE-API:1.0.0'
+      implementation 'design.ore.api:cORE-API:1.0.0'
    }
    ```
    Maven:
    ```bash
    <dependency>
-	    <groupId>com.github.Ore-Design</groupId>
-	    <artifactId>cORE-API</artifactId>
-	    <version>1.0.0</version>
-	</dependency>
+	<groupId>design.ore.api</groupId>
+	<artifactId>cORE-API</artifactId>
+	<version>1.0.0</version>
+   </dependency>
    ```
 
 ## Documentation
