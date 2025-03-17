@@ -1,0 +1,117 @@
+{
+	"folders": {},
+	"connections": {
+		"microsoft-19452064b2c-2cffc8f6af9ae59c": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "cORE 2",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "master",
+				"url": "jdbc:sqlserver://c-ore.database.windows.net:1433;database\u003dcORE-DB-2;user\u003dOreSoftwareAdmin@c-ore;password\u003dAzureSolaris40!;encrypt\u003dtrue;trustServerCertificate\u003dfalse;hostNameInCertificate\u003d*.database.windows.net;loginTimeout\u003d30;",
+				"configurationType": "URL",
+				"type": "prod",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_database"
+			}
+		},
+		"microsoft-194cdf9fa6e-39ffc8fb655eba65": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "master",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "master",
+				"url": "jdbc:sqlserver://c-ore.database.windows.net:1433;database\u003dcORE-DB;user\u003dOreSoftwareAdmin@c-ore;password\u003dAzureSolaris40!;encrypt\u003dtrue;trustServerCertificate\u003dfalse;hostNameInCertificate\u003d*.database.windows.net;loginTimeout\u003d30;",
+				"configurationType": "URL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_database"
+			}
+		},
+		"microsoft-1953df4c5e7-48c62c5bced8e5d2": {
+			"provider": "sqlserver",
+			"driver": "microsoft",
+			"name": "cORE Sandbox",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "1433",
+				"database": "master",
+				"url": "jdbc:sqlserver://c-ore.database.windows.net:1433;database\u003dcORE-DB-Sandbox;user\u003dOreSoftwareAdmin;password\u003dAzureSolaris40!;encrypt\u003dtrue;trustServerCertificate\u003dfalse;hostNameInCertificate\u003d*.database.windows.net;loginTimeout\u003d30;",
+				"configurationType": "URL",
+				"type": "test",
+				"closeIdleConnection": true,
+				"provider-properties": {
+					"@dbeaver-show-all-schemas@": "false",
+					"sslTrustServerCertificate": "false"
+				},
+				"auth-model": "sqlserver_database"
+			},
+			"filters": [
+				{
+					"id": "[cORE-DB-Sandbox].dbo",
+					"type": "org.jkiss.dbeaver.ext.mssql.model.SQLServerTable",
+					"enabled": true,
+					"include": ["*cORE*"]
+				}
+			]
+		}
+	},
+	"connection-types": {
+		"prod": {
+			"name": "Production",
+			"color": "org.jkiss.dbeaver.color.connectionType.prod.background",
+			"description": "Production database",
+			"auto-commit": false,
+			"confirm-execute": true,
+			"confirm-data-change": true,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 600,
+			"auto-close-connections": true,
+			"close-connections-period": 3600
+		},
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		},
+		"test": {
+			"name": "Test",
+			"color": "org.jkiss.dbeaver.color.connectionType.qa.background",
+			"description": "Test (QA) database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": true,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 900,
+			"auto-close-connections": true,
+			"close-connections-period": 7200
+		}
+	}
+}

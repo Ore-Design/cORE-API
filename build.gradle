@@ -56,14 +56,14 @@ targetCompatibility = 21
 def packagename = "core"
 archivesBaseName = "${packagename}"
 group = "design.ore.api"
-version = "2.0.13"
+version = "2.0.14"
 
 repositories {
     mavenCentral()
 }
 
 tasks.withType(JavaCompile) {
-	options.annotationProcessorGeneratedSourcesDirectory = file("src/generated/java")
+	options.generatedSourceOutputDirectory = file("src/generated/java")
 }
 
 sourceSets {
